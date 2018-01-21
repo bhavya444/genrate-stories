@@ -1,0 +1,73 @@
+//objects
+/*var myCat={
+    "name":"meow",
+    "species":"cat",
+    "favfood":"tuna"
+}
+ to access value myCat.favfood */
+
+ //for array
+ /*
+ var myfavcolors=["blue","green"]
+ myfavcolors[1] */
+
+ //comine array and objects (JSON)
+
+/*
+var pets= [
+    {"name":"meow",
+    "species":"cat",
+    "favfood":"tuna"
+},
+    {"name":"barky",
+    "species":"dog",
+    "favfood":"carrot"
+}
+]
+// to access data
+pets[1].value ex: pets[1].favfood 
+*/
+***********************************************************************************
+.. inside main.js
+
+
+
+var animal=document.getElementById("animal-info");
+var btn=document.getElementById("btn");
+btn.addEventListener("click",function() {
+    var ourrequest= new XMLHttpRequest();
+    ourrequest.open('GET','https://learnwebcode.github.io/json-example/animals-1.json'); // recieve data and type url
+    ourrequest.onload=function(){
+    //console.log(ourrequest.responseText);
+    var ourdata=JSON.parse(ourrequest.responseText);
+    //console.log(ourdata[0]);
+    renderHTML(ourdata);
+    };
+    ourrequest.send();
+});
+
+function renderHTML(data) {
+    var htmlString="";
+  for(i=0;i<data.length;i++)
+      htmlString+=data[i];
+
+}
+
+
+
+/*function renderHTML(data) {
+    var htmlString="THIS IS A TEXT";
+animal.insertAdjacentHTML('beforeend',htmlString);
+
+} */
+
+
+/*var ourrequest= new XMLHttpRequest();
+ourrequest.open('GET','https://learnwebcode.github.io/json-example/animals-1.json'); // recieve data and type url
+ourrequest.onload=function(){
+//console.log(ourrequest.responseText);
+var ourdata=JSON.parse(ourrequest.responseText);
+console.log(ourdata[0]);
+};
+ourrequest.send();
+*/
